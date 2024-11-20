@@ -4,7 +4,7 @@ A flexible, browser based note taking app.
 
 It is in early development.
 
-![PKM Screenshot][docs/pkm_screenshot.png]
+![PKM Screenshot](./docs/pkm_screenshot.png)
 
 
 ## Keybindings
