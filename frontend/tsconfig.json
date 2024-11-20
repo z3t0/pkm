@@ -1,0 +1,46 @@
+{
+  // "compilerOptions": {
+  //   "outDir": "build",
+  //   "sourceMap": true,
+  //   "noImplicitReturns": true,
+  //   "module": "commonjs",
+  //   "esModuleInterop": true,
+  //   "allowSyntheticDefaultImports": true,
+  //   "jsx": "react"
+  // }
+
+   "compilerOptions": {
+    "target": "es5",
+    "module": "es6",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "jsx": "react",
+    // "strict": true,
+    "moduleResolution": "node",
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    // "forceConsistentCasingInFileNames": true,
+     "allowSyntheticDefaultImports": true,
+
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    // "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+     "noEmit": true,
+     "allowImportingTsExtensions": true
+
+  },
+  "include": [
+    "src/**/*"
+, "../../../.emacs.d/backups/!home!rkhan971!dev!pkm!frontend!src!db!db.ts.~1~"  ],
+  "exclude": [
+    "node_modules"
+  ]
+}

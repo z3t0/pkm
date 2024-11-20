@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'Roboto';
+  src: url('./vendor/fonts/roboto/Roboto-Regular.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+link-text {
+  color: blue; /* Set the text color to a typical link color (e.g., blue) */
+  text-decoration: underline; /* Add an underline to simulate a link */
+  cursor: pointer; /* Change the cursor to a pointer to indicate clickability */
+}
+
+.link-text:hover {
+  text-decoration: none; /* Remove the underline when hovering (optional) */
+}

@@ -1,0 +1,11 @@
+.object-search-bar {
+    position: absolute;
+    top: 30%;
+    left: 50%;
+    z-index: 1000;
+    background-color: gray;
+}
+
+.selected {
+    color: blue;
+}

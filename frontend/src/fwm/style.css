@@ -1,0 +1,42 @@
+
+/* Tablet and Desktop */
+/* @media (min-width: 768px) {
+    .windowContainer {
+        width: 30vw;
+    }
+} */
+
+/* Mobile */
+/* @media (max-width: 767px) {
+    .windowContainer {
+        width: 80vw;
+    }
+} */
+
+
+.windowContainer {
+    position: fixed;
+    z-index: 100;
+    display: flex;
+    flex-direction: column;
+}
+
+.windowHeader {
+    background-color: lightblue;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    flex: 1;
+}
+
+.close-btn {
+    margin-right: 1rem;
+    font-size: 1.2rem;
+}
+
+.windowContent {
+    flex: 20;
+    height: 100%;
+    background-color: white;
+    display: flex;
+}

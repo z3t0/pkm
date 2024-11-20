@@ -1,0 +1,9 @@
+.top-buttons {
+    position: absolute;
+    justify-content: space-between;
+    align-items: center;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+    
