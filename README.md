@@ -36,6 +36,44 @@ It is in early development.
 - Keep dependencies minimal.
 - Testing, documentation, examples are encouraged.
 
+## Setup developer environment
+Requirements:
+- Node
+- Docker
+- GNU/Linux environment
+- Python3
+
+
+
+### Running the database
+First time setup.
+
+The script asks for sudo, when creating certain files with permissions.
+It takes ~1 minute.
+```sh
+cd devDb
+./configure_db.sh
+```
+
+Then you can run the database
+```sh
+./start.sh
+```
+
+### Running the frontend
+```sh
+cd frontend
+npm install
+npm start
+```
+
+The frontend should be running on http://localhost:8080
+
+You can login using the test user credentials:
+- test@test.com
+- test123
+
+
 
 ## License
 All first-party code in this repo is under AGPLv3 unless otherwise noted.
