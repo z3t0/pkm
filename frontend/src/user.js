@@ -37,6 +37,10 @@ class User {
 
   static login(username, password) {
     const db = new Database.connect(username, password)
+
+    // TMP hack:
+    window.db = db;
+
     User.setUsernameLocalStorage(username)
   }
 

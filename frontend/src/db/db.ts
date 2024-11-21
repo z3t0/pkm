@@ -9,6 +9,13 @@ import { User } from "../user.js";
 PouchDB.plugin(pouchdbFind);
 PouchDB.plugin(pouchdbAuthentication);
 
+interface CouchDbUserInfo {
+  username: string;
+  password: string;
+  targetCouchDbUrl: string; // host:port
+}
+
+
 class Database {
 
   _cloudDb: PouchDB.Database;
@@ -19,15 +26,26 @@ class Database {
   }
 
   // REFACTOR: rename to remoteDbUrl
-  static dbUrl (username) {
-    const dbName = Database.dbName(username)
 
-    if (Environment.isDev()) {
-      return "http://rk-devbox1:5984/" + dbName
-    }
-    else {
-      return "https://db.pkm.venerablesystems.com/" + dbName
-    }
+  static dbUrlWithHostname(username, hostname) {
+    const dbName = Database.dbName(username)
+    return hostname + "/" + dbName
+  }
+
+  static dbUrl (username) {
+    const hostname = (() => {
+      if (Environment.isDev()) {
+        // FIXME: This should probably be localhost for other devs.
+        //        It should default to localhost, with a local
+        //        override.
+        return "http://rk-devbox1:5984"
+      }
+      else {
+        return "https://db.pkm.venerablesystems.com"
+      }
+    })()
+
+    return Database.dbUrlWithHostname(username, hostname)
   }
 
   // The token persists between refreshes.
@@ -91,6 +109,38 @@ class Database {
     const local_db = this.getLocalDb()
 
     local_db.sync(cloud_db, {live: true, retry: true})
+  }
+
+  replicate(target: CouchDbUserInfo) {
+
+    const { username, password, targetCouchDbUrl } = target
+
+
+    const targetDb = new PouchDB(Database.dbUrlWithHostname(username,
+      targetCouchDbUrl),
+                                 { skip_setup: true })
+
+    window.pkmdev.targetDb = targetDb
+
+    // TODO: perform sync after connect
+    // login() is provided by pouchdb-authentication
+    // @ts-ignore
+    targetDb.login(username, password)
+
+    return new Promise((res, rej) => {
+      console.log("Attempting replication")
+
+      this.getLocalDb().replicate.to(targetDb, {
+        live: false, // One-shot replication
+        retry: false // No retries
+      }).then(result => {
+        console.log('Replication successful:', result);
+        res()
+      }).catch(error => {
+        console.error('Replication failed:', error);
+        rej(error)
+      });
+    })
   }
 
   createIndexes() {

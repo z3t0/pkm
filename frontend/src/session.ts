@@ -19,6 +19,10 @@ class Session {
   setSessionSingleton () {
     // TODO: Log warning if installing a second time or throw an error.
     Session._currentSession = this
+
+    // DEV Hack
+    window.pkmdev = {}
+    window.pkmdev.session = Session.getSessionSingleton()
   }
 
   // If we can reach the cloud db then we are logged in.
