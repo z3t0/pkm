@@ -17,3 +17,16 @@ jobs:
           cd frontend
           npm install
           npm run build:dev
+
+      - name: Ensure gh pages works by telling git the directory is safe
+        run: |
+          git config --global --add safe.directory $(pwd)
+      # TODO: move deploy to its own job, use dist artifact to pass between build to deploy step
+      - name: Deploy with gh-pages
+        run: |
+          cd frontend
+          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          git remote -v
+          npm run deploy:gh-pages -- -u "github-actions-bot <support+actions@github.com>"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

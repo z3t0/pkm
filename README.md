@@ -6,6 +6,8 @@ It is in early development.
 
 ![PKM Screenshot](./docs/pkm_screenshot.png)
 
+WIP Setting up a demo site: 
+- https://z3t0.github.io/pkm/ 
 
 ## Keybindings
 - Alt-x to open the command-bar
