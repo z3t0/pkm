@@ -8,4 +8,5 @@ jobs:
      image: node:22.11-bookworm
      options: --cpus 2
     steps:
-      - run: echo "hello, world"
+      - run: cd frontend
+      - run: ls
