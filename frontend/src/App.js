@@ -31,6 +31,7 @@ import { ObjectSearchBar } from "./object_search_bar/object_search_bar.js";
 import { Database } from "./db/db.ts";
 import { Session } from "./session.ts";
 
+console.log("test new deploy script")
 
 const channel = postal.channel()
 
