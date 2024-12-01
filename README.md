@@ -8,6 +8,7 @@ It is in early development.
 
 WIP Setting up a demo site: 
 - https://z3t0.github.io/pkm/ 
+- the site is not fully functional yet
 
 ## Keybindings
 - Alt-x to open the command-bar
