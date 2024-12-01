@@ -1,10 +1,9 @@
 name: Hello World
 run-name: Hello world github
-runs-on: [self-hosted, linux]
 on: [push]
 jobs:
   Explore-GitHub-Actions:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, linux]
     steps:
       - run: echo "hello, world"
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
