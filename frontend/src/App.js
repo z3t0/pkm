@@ -92,7 +92,7 @@ function App() {
   useEffect(() => {
     async function effect() {
       if (isLoggedIn === null) {
-        console.log("login state unknown")
+        console.log("login state is unknown")
 
         const isSessionValid = await setupApp()
         setIsLoggedIn(isSessionValid)
