@@ -1,0 +1,19 @@
+name: PKM
+on: [push]
+jobs:
+  Frontend-Build-Dev:
+    runs-on: [self-hosted, linux]
+    container:
+     image: node:22.11-bookworm
+     options: --cpus 2
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - run: ls
+
+      - name: Ensure the frontend builds in dev
+        run: |
+          cd frontend
+          npm install
+          npm run build:dev
