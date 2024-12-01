@@ -29,8 +29,10 @@ jobs:
           cd frontend
           rm -r dist/
 
+  # The demo is deployed from any push to main
   frontend-deploy-demo:
     needs: Frontend-Build-Dev
+    if: github.ref == 'refs/heads/main'
     runs-on: [self-hosted, linux]
     container:
       image: node:22.11-bookworm
