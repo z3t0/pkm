@@ -76,6 +76,23 @@ You can login using the test user credentials:
 - test@test.com
 - test123
 
+## Demo site
+The demo site is deployed at https://z3t0.github.io/pkm/
+
+To deploy manually:
+```sh
+cd frontend
+npm install
+npm run build:dev
+npm run deploy:gh-pages
+```
+
+This requires write access to the gh-pages branch on this repo.
+
+
+The site is also automatically deployed with the CI.
+The CI runs on all pushes at the moment.
+This [issue](https://github.com/z3t0/pkm/issues/12) tracks a task to make the deployment only run for pushes on the main branch.
 
 
 ## License
