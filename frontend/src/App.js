@@ -5,8 +5,6 @@ import { ChakraProvider } from '@chakra-ui/react'
 import { theme } from "./chakra/theme.js";
 import { Button, ButtonGroup } from '@chakra-ui/react'
 
-import './postal-example.js'
-import './localforage-example.js'
 
 import "./note/seed_data.js";
 import { Window } from "./fwm/window.js"
