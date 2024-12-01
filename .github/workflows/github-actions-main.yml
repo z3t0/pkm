@@ -1,7 +1,7 @@
 name: PKM
 on: [push]
 jobs:
-  Frontend-Build-Dev:
+  frontend-build-dev:
     runs-on: [self-hosted, linux]
     container:
      image: node:22.11-bookworm
@@ -31,7 +31,7 @@ jobs:
 
   # The demo is deployed from any push to main
   frontend-deploy-demo:
-    needs: Frontend-Build-Dev
+    needs: frontend-build-dev
     if: github.ref == 'refs/heads/main'
     runs-on: [self-hosted, linux]
     container:
