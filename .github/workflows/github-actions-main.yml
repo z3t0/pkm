@@ -1,5 +1,6 @@
 name: Hello World
 run-name: Hello world github
+runs-on: [self-hosted, linux]
 on: [push]
 jobs:
   Explore-GitHub-Actions:
