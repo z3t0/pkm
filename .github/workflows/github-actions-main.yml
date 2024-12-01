@@ -18,15 +18,40 @@ jobs:
           npm install
           npm run build:dev
 
-      - name: Ensure gh pages works by telling git the directory is safe
-        run: |
-          git config --global --add safe.directory $(pwd)
-      # TODO: move deploy to its own job, use dist artifact to pass between build to deploy step
-      - name: Deploy with gh-pages
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dev-dist
+          path: frontend/dist
+
+      - name: Cleanup; remove the dist
         run: |
           cd frontend
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          git remote -v
-          npm run deploy:gh-pages -- -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          rm -r dist/
+
+  frontend-deploy-demo:
+    needs: Frontend-Build-Dev
+    runs-on: [self-hosted, linux]
+    container:
+      image: node:22.11-bookworm
+      options: --cpus 2
+    steps:
+     - name: Download dev build
+       uses: actions/download-artifact@v4
+       with:
+         pattern: frontend-dev-dist
+
+     - name: Ensure gh pages works by telling git the directory is safe
+       run: |
+         git config --global --add safe.directory $(pwd)
+
+     - name: run deploy
+       run: |
+         mv frontend-dev-dist frontend/dist
+         cd frontend
+         git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+         git remote -v
+         npm run deploy:gh-pages -- -u "github-actions-bot <support+actions@github.com>"
+       env:
+         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
