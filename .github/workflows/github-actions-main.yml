@@ -29,19 +29,47 @@ jobs:
           cd frontend
           rm -r dist/
 
+  frontend-build-demo:
+    runs-on: [self-hosted, linux]
+    container:
+     image: node:22.11-bookworm
+     options: --cpus 2
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - run: ls
+
+      - name: Ensure the frontend builds in dev
+        run: |
+          cd frontend
+          npm install
+          npm run build:demo
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: frontend-dev-demo
+          path: frontend/dist
+
+      - name: Cleanup; remove the dist
+        run: |
+          cd frontend
+          rm -r dist/
+
   # The demo is deployed from any push to main
   frontend-deploy-demo:
-    needs: frontend-build-dev
+    needs: frontend-build-demo
     if: github.ref == 'refs/heads/main'
     runs-on: [self-hosted, linux]
     container:
       image: node:22.11-bookworm
       options: --cpus 2
     steps:
-     - name: Download dev build
+     - name: Download demo build
        uses: actions/download-artifact@v4
        with:
-         pattern: frontend-dev-dist
+         pattern: frontend-demo-dist
 
      - name: Ensure gh pages works by telling git the directory is safe
        run: |
