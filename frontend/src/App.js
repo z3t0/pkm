@@ -12,6 +12,7 @@ import { WindowManagerModel } from "./fwm/window_manager_model.js";
 import { WindowManagerUI } from "./fwm/window_manager_ui.js";
 
 import { NoteSystem } from "./note/system.js";
+import { PlainTextSystem } from "./plain_text/system.ts";
 import { NotesList } from "./note/list/ui.js"
 import { LoginForm } from "./login.js";
 import { LogoutButton } from "./logout.tsx";
@@ -22,6 +23,7 @@ import { slogger } from "./slogger.js";
 const l = slogger({tag: 'app' })
 
 NoteSystem().init()
+// new PlainTextSystem()
 WindowManagerModel().init()
 
 import NoteShell from "./note/shell.js";
