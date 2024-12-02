@@ -4,7 +4,6 @@ import pino from 'pino'
 
 import { Note } from "./editor/ui.js"
 import { DestructiveConfirmation } from "./destructiveConfirmation.js";
-import { ModelManager } from "./model_manager.js";
 import { get } from 'lodash';
 
 const module_id = "pkm.note";
