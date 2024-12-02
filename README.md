@@ -47,7 +47,6 @@ Requirements:
 - Python3
 
 
-
 ### Running the database
 First time setup.
 
