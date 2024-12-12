@@ -31,6 +31,8 @@ import { ObjectSearchBar } from "./object_search_bar/object_search_bar.js";
 import { Database } from "./db/db.ts";
 import { Session } from "./session.ts";
 
+import "./gptjs/shell.ts";
+
 console.log("dec1 hello")
 
 const channel = postal.channel()
