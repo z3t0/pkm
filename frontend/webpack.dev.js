@@ -6,7 +6,7 @@ module.exports = merge(common, {
     mode: "development",
     devServer: {
         host: '0.0.0.0',
-        allowedHosts: ['rk-devbox1']
+        allowedHosts: ['rk-devbox1', 'pkm.demo.omniinc.app']
       },
 
 
