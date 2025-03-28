@@ -58,6 +58,18 @@ function NotesList() {
     updateNotesList()
   }, [searchTerm])
 
+  // hack to refresh on interval for new notes 
+  React.useEffect(() => {
+
+    const handle = setInterval(() => {
+      updateNotesList()
+    }, 1000)
+
+    return () => {
+      clearInterval(handle)
+    }
+  }, [searchTerm])
+
   // TODO: update the notes list over time
   // show all notes on startup
   // FIXME: Race condition.

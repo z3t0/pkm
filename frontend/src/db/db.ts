@@ -41,7 +41,8 @@ class Database {
         return "http://rk-devbox1:5984"
       }
       else {
-        return "https://db.pkm.venerablesystems.com"
+        return "https://dbpkm.demo.omniinc.app"
+        // return "https://db.pkm.venerablesystems.com"
       }
     })()
 
